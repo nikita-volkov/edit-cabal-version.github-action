@@ -1,0 +1,64 @@
+
+on:
+  push:
+
+jobs:
+  e2e-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: edit-1
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        with:
+          mode: bump
+          bump-place: 1
+
+      - run: |
+          if [ "${{ steps.edit-1.outputs.after }}" != "0.1" ]
+            then
+              echo "Invalid version after bump: ${{ steps.edit-1.outputs.after }}"
+              exit 1
+            fi
+
+      - id: edit-2
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        with:
+          mode: bump
+          bump-place: 1
+
+      - run: |
+          if [ "${{ steps.edit-2.outputs.after }}" != "0.2" ]
+            then
+              echo "Invalid version after bump: ${{ steps.edit-2.outputs.after }}"
+              exit 1
+            fi
+
+      - id: edit-3
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        with:
+          mode: bump
+          bump-place: 0
+
+      - run: |
+          if [ "${{ steps.edit-3.outputs.after }}" != "1" ]
+            then
+              echo "Invalid version after bump: ${{ steps.edit-3.outputs.after }}"
+              exit 1
+            fi
+
+      - id: edit-4
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        with:
+          mode: bump
+          bump-place: 3
+
+      - run: |
+          if [ "${{ steps.edit-4.outputs.after }}" != "1.0.0.1" ]
+            then
+              echo "Invalid version after bump: ${{ steps.edit-4.outputs.after }}"
+              exit 1
+            fi
+
+      - run: |
+          cat test.cabal

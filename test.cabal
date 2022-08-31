@@ -1,0 +1,7 @@
+cabal-version: 3.0
+
+name: test
+version: 0
+
+common common-settings
+  default-language: Haskell2010
