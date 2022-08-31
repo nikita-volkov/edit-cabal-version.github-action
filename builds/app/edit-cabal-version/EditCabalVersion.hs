@@ -1,10 +1,9 @@
-module EditCabalVersion where
+module EditCabalVersion
+  ( bumpVersionInText,
+  )
+where
 
 import Coalmine.Prelude hiding (parseVersion)
-
-editFile :: Path -> (Text -> Either Text Text) -> IO ()
-editFile =
-  error "TODO"
 
 parseVersion :: Text -> Either Text [Int]
 parseVersion =
@@ -18,6 +17,17 @@ renderVersion :: [Int] -> Text
 renderVersion =
   error "TODO"
 
+bumpVersion ::
+  -- | Index of the bumped version section.
+  -- Major, Minor, Patch and etc.
+  Int ->
+  [Int] ->
+  [Int]
+bumpVersion =
+  error "TODO"
+
+-- * Final
+
 bumpVersionInText ::
   -- | Index of the bumped version section.
   -- Major, Minor, Patch and etc.
@@ -28,12 +38,3 @@ bumpVersionInText position text =
   parseVersion text
     <&> bumpVersion position
     <&> renderVersion
-
-bumpVersion ::
-  -- | Index of the bumped version section.
-  -- Major, Minor, Patch and etc.
-  Int ->
-  [Int] ->
-  [Int]
-bumpVersion =
-  error "TODO"
