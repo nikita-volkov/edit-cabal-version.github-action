@@ -3,7 +3,38 @@ module EditCabalVersion
   )
 where
 
+import qualified Coalmine.NumericVersion as NumericVersion
 import Coalmine.Prelude hiding (parseVersion)
+import qualified Data.Attoparsec.Text as Ap
+import qualified Data.Text as Text
+
+data CabalContents
+  = CabalContents
+      !Text
+      -- ^ Prefix.
+      !NumericVersion.NumericVersion
+      !Text
+      -- ^ Suffix.
+
+parseCabal :: Text -> Either Text CabalContents
+parseCabal =
+  parse parser
+  where
+    parser =
+      CabalContents <$> prefix <*> lenientParser <*> Ap.takeText
+      where
+        prefix = do
+          (a, b) <- reverseManyTillPreserving prefixPart versionLinePrefix
+          return . mconcat . reverse $ b <> a
+          where
+            prefixPart =
+              (<>) <$> Ap.takeWhile (/= '\n') <*> (Text.singleton <$> Ap.char '\n')
+            versionLinePrefix = do
+              a <- Ap.asciiCI "version"
+              b <- Ap.takeWhile isSpace
+              c <- Ap.char ':'
+              d <- Ap.takeWhile isSpace
+              return $ [d, Text.singleton c, b, a]
 
 parseVersion :: Text -> Either Text [Int]
 parseVersion =
