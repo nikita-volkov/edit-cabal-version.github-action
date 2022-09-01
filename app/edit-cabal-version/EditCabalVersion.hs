@@ -12,50 +12,34 @@ data CabalContents
   = CabalContents
       !Text
       -- ^ Prefix.
-      !NumericVersion.NumericVersion
+      !NumericVersion
       !Text
       -- ^ Suffix.
 
-parseCabal :: Text -> Either Text CabalContents
-parseCabal =
-  parse parser
-  where
-    parser =
-      CabalContents <$> prefix <*> lenientParser <*> Ap.takeText
-      where
-        prefix = do
-          (a, b) <- reverseManyTillPreserving prefixPart versionLinePrefix
-          return . mconcat . reverse $ b <> a
-          where
-            prefixPart =
-              (<>) <$> Ap.takeWhile (/= '\n') <*> (Text.singleton <$> Ap.char '\n')
-            versionLinePrefix = do
-              a <- Ap.asciiCI "version"
-              b <- Ap.takeWhile isSpace
-              c <- Ap.char ':'
-              d <- Ap.takeWhile isSpace
-              return $ [d, Text.singleton c, b, a]
+instance LenientParser CabalContents where
+  lenientParser = do
+    CabalContents <$> prefix <*> lenientParser <*> Ap.takeText
+    where
+      prefix = do
+        (a, b) <- reverseManyTillPreserving prefixPart versionLinePrefix
+        return . mconcat . reverse $ b <> a
+        where
+          prefixPart =
+            (<>) <$> Ap.takeWhile (/= '\n') <*> (Text.singleton <$> Ap.char '\n')
+          versionLinePrefix = do
+            a <- Ap.asciiCI "version"
+            b <- Ap.takeWhile isSpace
+            c <- Ap.char ':'
+            d <- Ap.takeWhile isSpace
+            return $ [d, Text.singleton c, b, a]
 
-parseVersion :: Text -> Either Text [Int]
-parseVersion =
-  error "TODO"
+instance CompactPrinting CabalContents where
+  toCompactBuilder (CabalContents a b c) =
+    to a <> toCompactBuilder b <> to c
 
-setVersion :: [Int] -> Text -> Text
-setVersion =
-  error "TODO"
-
-renderVersion :: [Int] -> Text
-renderVersion =
-  error "TODO"
-
-bumpVersion ::
-  -- | Index of the bumped version section.
-  -- Major, Minor, Patch and etc.
-  Int ->
-  [Int] ->
-  [Int]
-bumpVersion =
-  error "TODO"
+traverseCabalContentsVersion :: Functor f => (NumericVersion -> f NumericVersion) -> CabalContents -> f CabalContents
+traverseCabalContentsVersion mapper (CabalContents a b c) =
+  mapper b <&> \b -> CabalContents a b c
 
 -- * Final
 
@@ -65,7 +49,8 @@ bumpVersionInText ::
   Int ->
   Text ->
   Either Text Text
-bumpVersionInText position text =
-  parseVersion text
-    <&> bumpVersion position
-    <&> renderVersion
+bumpVersionInText position text = do
+  contents <- parse lenientParser text
+  case traverseCabalContentsVersion (NumericVersion.bump position) contents of
+    Nothing -> Left "Missing position"
+    Just contents -> Right $ printCompactAs contents

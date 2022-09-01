@@ -62,16 +62,16 @@ packages:
   original:
     url: https://github.com/nikita-volkov/canapi/archive/02f1d9ffea90522a3a0968305793a7f507c7da59.tar.gz
 - completed:
-    sha256: 5fcc8d729d614fa07c4b7e454694e8eb7cb52b7239de34d9713f6bda9aa23763
+    sha256: e750efab0fbe0f004c3623ddccf20e2fb2054a8f7c72ba7c499172e32a812fe3
     name: coalmine
-    size: 55003
-    url: https://github.com/nikita-volkov/coalmine/archive/b591fe7de094c9d5dc9152cc9dd17e07b01410cc.tar.gz
+    size: 55011
+    url: https://github.com/nikita-volkov/coalmine/archive/3b81f5df395a7081f09f7f17a522fb75b7781fbc.tar.gz
     pantry-tree:
-      sha256: e0123d87435fec3f09c5983bfbaffef3905967dac59dab58ab39f42e259f6cf7
+      sha256: 5d4cf056b3d823ec83263ac6f58903ad6c19e7ca0bd0f86219cff1108a24663d
       size: 9714
     version: 0.1.0.5
   original:
-    url: https://github.com/nikita-volkov/coalmine/archive/b591fe7de094c9d5dc9152cc9dd17e07b01410cc.tar.gz
+    url: https://github.com/nikita-volkov/coalmine/archive/3b81f5df395a7081f09f7f17a522fb75b7781fbc.tar.gz
 - completed:
     sha256: d6dcd0ca1503d36a353d6e4015565ce25d41ab7b132d8d11b158153af5852c24
     name: curly
@@ -129,11 +129,11 @@ packages:
     url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
 snapshots:
 - completed:
-    sha256: 3708f2122b07c0d627fb8baf518bd378f91f40f8390e0087ab8062f5bb48ad16
+    sha256: 3aa30b10ad0cb986fab7b0cf252e5925a90aefa68871adff721131a3ed2c2f14
     size: 1030
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/07fd9e22c65fe251f313353da935968a05787c65/snapshot.yaml
+    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/74626a7ff3b879047f830ff1e6a7b146357b9931/snapshot.yaml
   original:
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/07fd9e22c65fe251f313353da935968a05787c65/snapshot.yaml
+    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/74626a7ff3b879047f830ff1e6a7b146357b9931/snapshot.yaml
 - completed:
     sha256: 7d29272d067873a0d9d612fba0bd58a84c2c19d2ae37205bdf608840b15aa278
     size: 632828
