@@ -127,6 +127,17 @@ packages:
     version: 0.1.0.1
   original:
     url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
+- completed:
+    name: coalmine
+    pantry-tree:
+      sha256: 28762f1ba7fd4a8dc9d2ee5b7d955044c929b527ee643e8171111fe5de261b07
+      size: 9785
+    commit: 2d849d872e799d04c467314b9a87ca2aeec5e497
+    git: https://github.com/nikita-volkov/coalmine
+    version: 0.1.0.5
+  original:
+    commit: 2d849d872e799d04c467314b9a87ca2aeec5e497
+    git: https://github.com/nikita-volkov/coalmine
 snapshots:
 - completed:
     sha256: 3aa30b10ad0cb986fab7b0cf252e5925a90aefa68871adff721131a3ed2c2f14

@@ -1,3 +1,4 @@
+import qualified Coalmine.ArgsParser as ArgsParser
 import qualified Coalmine.EvenSimplerPaths as Path
 import qualified Coalmine.HappyPathIO as HappyPathIO
 import Coalmine.Prelude
@@ -32,11 +33,15 @@ findCabalFile = do
 
 readArgs :: IO Config
 readArgs =
-  getArgs >>= \case
-    [a] -> case readMaybe a of
-      Just a -> return $ BumpConfig a
-      Nothing -> die $ "Invalid position: " <> a
-    _ -> die "Invalid amount of args. Expecting 1"
+  ArgsParser.getAndConsumeArgsHappily . join . ArgsParser.enum $
+    [ ("get", get),
+      ("bump", bump)
+    ]
+  where
+    get = return $ GetConfig
+    bump = do
+      position <- ArgsParser.minMaxInt 0 7
+      return $ BumpConfig position
 
 data Config
   = GetConfig
