@@ -1,0 +1,22 @@
+name: Read or bump the version in a Cabal file
+
+inputs:
+  mode:
+    type: string
+    required: true
+    description: read | bump
+  bump-component:
+    type: int
+    required: false
+    description: If the mode is bump, then the index of the bumped version component
+outputs:
+  before:
+    description: Version before edit
+  after:
+    description: Version after edit
+runs:
+  using: docker
+  image: docker/Dockerfile
+  args:
+    - ${{ inputs.container-id }}
+    - ${{ inputs.sa-key }}
