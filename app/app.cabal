@@ -31,9 +31,9 @@ test-suite test
   build-depends:
     edit-cabal-version,
 
-executable app
+executable github-action
   import: common-settings
-  hs-source-dirs: app
+  hs-source-dirs: github-action
   main-is: Main.hs
   build-depends:
     optima,

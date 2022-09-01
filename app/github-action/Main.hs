@@ -7,19 +7,28 @@ import EditCabalVersion
 
 main :: IO ()
 main = do
-  path <- findCabalFile
   config <- readArgs
+  path <- findCabalFile
+  let pathString = Path.toString path
+  contents <- TextIO.readFile pathString
   case config of
-    BumpConfig position ->
-      editFile path (bumpVersionInText position)
+    BumpConfig position -> do
+      VersionBumped {..} <- case bumpVersion position contents of
+        Left err -> die [i|Failed to read file "$path": $err|]
+        Right res -> return res
+      TextIO.writeFile pathString versionBumpedText
+      putStrLn [i|::set-output name=old-version::$versionBumpedOldVersion|]
+      putStrLn [i|::set-output name=new-version::$versionBumpedNewVersion|]
+    GetConfig -> do
+      VersionBumped {..} <- case bumpVersion 0 contents of
+        Left err -> die [i|Failed to read file "$path": $err|]
+        Right res -> return res
+      putStrLn [i|::set-output name=old-version::$versionBumpedOldVersion|]
+      putStrLn [i|::set-output name=new-version::$versionBumpedOldVersion|]
 
-editFile :: Path -> (Text -> Either Text Text) -> IO ()
-editFile path editor = do
-  content <- TextIO.readFile pathString
-  content <- case editor content of
-    Right content -> return content
-    Left err -> die [i|Failed to edit file "$path": $err|]
-  TextIO.writeFile pathString content
+editFile :: Path -> (Text -> IO Text) -> IO ()
+editFile path onText =
+  TextIO.readFile pathString >>= onText >>= TextIO.writeFile pathString
   where
     pathString = Path.toString path
 

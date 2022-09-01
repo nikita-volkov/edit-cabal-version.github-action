@@ -1,5 +1,6 @@
 module EditCabalVersion
-  ( bumpVersionInText,
+  ( bumpVersion,
+    VersionBumped (..),
   )
 where
 
@@ -37,20 +38,43 @@ instance CompactPrinting CabalContents where
   toCompactBuilder (CabalContents a b c) =
     to a <> toCompactBuilder b <> to c
 
+cabalContentsVersion :: CabalContents -> NumericVersion
+cabalContentsVersion (CabalContents _ b _) = b
+
+cabalContentsText :: CabalContents -> Text
+cabalContentsText = printCompactAs
+
 traverseCabalContentsVersion :: Functor f => (NumericVersion -> f NumericVersion) -> CabalContents -> f CabalContents
 traverseCabalContentsVersion mapper (CabalContents a b c) =
   mapper b <&> \b -> CabalContents a b c
 
 -- * Final
 
-bumpVersionInText ::
+data VersionBumped = VersionBumped
+  { versionBumpedOldVersion :: NumericVersion,
+    versionBumpedNewVersion :: NumericVersion,
+    versionBumpedText :: Text
+  }
+
+bumpVersion ::
   -- | Index of the bumped version section.
   -- Major, Minor, Patch and etc.
   Int ->
   Text ->
-  Either Text Text
-bumpVersionInText position text = do
+  Either Text VersionBumped
+bumpVersion position text = do
   contents <- parse lenientParser text
-  case traverseCabalContentsVersion (NumericVersion.bump position) contents of
-    Nothing -> Left "Missing position"
-    Just contents -> Right $ printCompactAs contents
+  case runMaybeT (traverseCabalContentsVersion onVersion contents) of
+    (oldVersion, Just contents) ->
+      Right $
+        VersionBumped
+          oldVersion
+          (cabalContentsVersion contents)
+          (cabalContentsText contents)
+    (_, Nothing) ->
+      Left $ "Unavailable position"
+  where
+    onVersion version =
+      case NumericVersion.bump position version of
+        Just bumped -> MaybeT $ (version, Just bumped)
+        Nothing -> MaybeT $ (version, Nothing)
