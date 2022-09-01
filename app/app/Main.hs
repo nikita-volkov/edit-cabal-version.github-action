@@ -7,8 +7,10 @@ import EditCabalVersion
 main :: IO ()
 main = do
   path <- findCabalFile
-  position <- readArgs
-  editFile path (bumpVersionInText position)
+  config <- readArgs
+  case config of
+    BumpConfig position ->
+      editFile path (bumpVersionInText position)
 
 editFile :: Path -> (Text -> Either Text Text) -> IO ()
 editFile path editor = do
@@ -28,10 +30,14 @@ findCabalFile = do
     [] -> die "No Cabal-file found"
     _ -> die "More than one Cabal-file found"
 
-readArgs :: IO Int
+readArgs :: IO Config
 readArgs =
   getArgs >>= \case
     [a] -> case readMaybe a of
-      Just a -> return a
+      Just a -> return $ BumpConfig a
       Nothing -> die $ "Invalid position: " <> a
     _ -> die "Invalid amount of args. Expecting 1"
+
+data Config
+  = GetConfig
+  | BumpConfig !Int
