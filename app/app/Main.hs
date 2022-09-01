@@ -33,15 +33,18 @@ findCabalFile = do
 
 readArgs :: IO Config
 readArgs =
-  ArgsParser.getAndConsumeArgsHappily . join . ArgsParser.enum $
-    [ ("get", get),
-      ("bump", bump)
-    ]
+  ArgsParser.getAndConsumeArgsHappily . join $ mode
   where
-    get = return $ GetConfig
-    bump = do
-      position <- ArgsParser.minMaxInt 0 7
-      return $ BumpConfig position
+    mode =
+      ArgsParser.enum
+        [ ("get", get),
+          ("bump", bump)
+        ]
+      where
+        get = return GetConfig
+        bump = do
+          position <- ArgsParser.minMaxInt 0 7
+          return $ BumpConfig position
 
 data Config
   = GetConfig
