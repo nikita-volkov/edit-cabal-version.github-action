@@ -42,10 +42,10 @@ findCabalFile = do
 
 readArgs :: IO Config
 readArgs =
-  ArgsParser.getAndConsumeArgsHappily . join $ mode
+  ArgsParser.getAndConsumeArgsHappily mode
   where
     mode =
-      ArgsParser.enum
+      join . ArgsParser.enum $
         [ ("get", get),
           ("bump", bump)
         ]
