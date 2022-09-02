@@ -72,9 +72,12 @@ jobs:
           propertyPath: runs.image
           value: ${{ steps.define-image-metadata.outputs.name }}
           updateFile: true
-          commitChange: true
-          branch: ${{ github.ref_name }}
-          message: Update docker image to ${{ steps.get-version.outputs.new_tag }}
+          commitChange: false
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update docker image to ${{ steps.get-version.outputs.new_tag }}
+          file_pattern: /action.yml
 
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
