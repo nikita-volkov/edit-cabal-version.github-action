@@ -70,7 +70,7 @@ jobs:
         with:
           valueFile: action.yml
           propertyPath: runs.image
-          value: ${{ steps.define-image-metadata.outputs.name }}
+          value: docker://${{ steps.define-image-metadata.outputs.name }}
           updateFile: true
           commitChange: false
 
