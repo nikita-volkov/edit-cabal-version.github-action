@@ -32,7 +32,7 @@ jobs:
           cd app
           stack build --local-bin-path ../docker/dist --copy-bins
 
-      - name: Bump version and push tag
+      - name: Derive new version from tags
         id: get-version
         # Using the older version due to (until fixed):
         # https://github.com/anothrNick/github-tag-action/issues/139
