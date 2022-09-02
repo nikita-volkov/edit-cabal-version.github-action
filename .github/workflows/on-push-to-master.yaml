@@ -19,10 +19,10 @@ jobs:
           path: |
             ~/.stack
             app/.stack-work
-          key: ${{ runner.os }}-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('**.cabal') }}
+          key: ${{ runner.os }}-${{ hashFiles('app/stack.yaml.lock') }}-${{ hashFiles('app/**.cabal') }}
           restore-keys: |
-            ${{ runner.os }}-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('**.cabal') }}
-            ${{ runner.os }}-${{ hashFiles('stack.yaml.lock') }}-
+            ${{ runner.os }}-${{ hashFiles('app/stack.yaml.lock') }}-${{ hashFiles('app/**.cabal') }}
+            ${{ runner.os }}-${{ hashFiles('app/stack.yaml.lock') }}-
             ${{ runner.os }}-
 
       - name: Build
