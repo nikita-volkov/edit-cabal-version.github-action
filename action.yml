@@ -20,7 +20,7 @@ outputs:
     description: Version after edit
 runs:
   using: docker
-  image: ghcr.io/nikita-volkov/edit-cabal-version.github-action:v1.0.0
+  image: docker://ghcr.io/nikita-volkov/edit-cabal-version.github-action:v1.0.0
   args:
     - ${{ inputs.work-dir }}
     - ${{ inputs.mode }}
