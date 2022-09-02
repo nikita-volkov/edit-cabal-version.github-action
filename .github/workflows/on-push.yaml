@@ -79,9 +79,8 @@ jobs:
           commit_message: Update docker image to ${{ steps.get-version.outputs.new_tag }}
           file_pattern: /action.yml
 
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.36.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_BRANCHES: major,minor,patch
-          CUSTOM_TAG: ${{ steps.get-version.outputs.new_tag }}
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.get-version.outputs.new_tag }}
