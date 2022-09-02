@@ -32,3 +32,7 @@ Outputs:
 
 - `before` - current version
 - `after` - current version (no changes in this mode)
+
+## Custom Work Directory
+
+In all modes you can provide a path to the directory which contains the Cabal-file. Use the `work-dir` option for that. If it is not specified, path of `.` is implied.
