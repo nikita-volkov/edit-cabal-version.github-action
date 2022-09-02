@@ -36,5 +36,4 @@ executable github-action
   hs-source-dirs: github-action
   main-is: Main.hs
   build-depends:
-    optima,
     edit-cabal-version,
