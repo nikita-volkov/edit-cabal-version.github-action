@@ -1,4 +1,6 @@
-name: Read or bump the version in a Cabal file
+description: Read or bump the package version in the Cabal-file
+name: Edit version in Cabal-file
+author: Nikita Volkov
 inputs:
   work-dir:
     type: string
