@@ -1,6 +1,6 @@
 # Summary
 
-GitHub Action for bumping and retrieving the package version in `.cabal` files for Haskell projects.
+GitHub Action for bumping and retrieving the package version in `.cabal` files for Haskell projects. It does not affect the formatting.
 
 # Usage
 
