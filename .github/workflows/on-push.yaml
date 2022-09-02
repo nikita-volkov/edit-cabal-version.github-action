@@ -73,6 +73,7 @@ jobs:
           value: ${{ steps.define-image-metadata.outputs.name }}
           updateFile: true
           commitChange: true
+          branch: ${{ github.ref_name }}
           message: Update docker image to ${{ steps.get-version.outputs.new_tag }}
 
       - name: Bump version and push tag
