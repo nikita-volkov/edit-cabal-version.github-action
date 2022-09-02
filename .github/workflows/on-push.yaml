@@ -1,0 +1,82 @@
+
+on:
+  push:
+    branches:
+      - major
+      - minor
+      - patch
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.stack
+            app/.stack-work
+          key: ${{ runner.os }}-${{ hashFiles('app/stack.yaml.lock') }}-${{ hashFiles('app/**.cabal') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ hashFiles('app/stack.yaml.lock') }}-${{ hashFiles('app/**.cabal') }}
+            ${{ runner.os }}-${{ hashFiles('app/stack.yaml.lock') }}-
+            ${{ runner.os }}-
+
+      - name: Build
+        run: |
+          cd app
+          stack build --local-bin-path ../docker/dist --copy-bins
+
+      - name: Bump version and push tag
+        id: get-version
+        # Using the older version due to (until fixed):
+        # https://github.com/anothrNick/github-tag-action/issues/139
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          RELEASE_BRANCHES: major,minor,patch
+          INITIAL_VERSION: v0.0.0
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: ${{ github.ref_name }}
+          WITH_V: true
+          DRY_RUN: true
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Define image metadata
+        id: define-image-metadata
+        run: |
+          echo ::set-output name=name::${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get-version.outputs.new_tag }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: docker
+          push: true
+          tags:
+            ${{ steps.define-image-metadata.outputs.name }}
+
+      - name: Update action.yml
+        uses: fjogeleit/yaml-update-action@v0.10.0
+        with:
+          valueFile: action.yml
+          propertyPath: runs.image
+          value: ${{ steps.define-image-metadata.outputs.name }}
+          updateFile: true
+          commitChange: true
+          message: Update docker image to ${{ steps.get-version.outputs.new_tag }}
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_TAG: ${{ steps.get-version.outputs.new_tag }}
