@@ -17,14 +17,14 @@ main = do
         Left err -> die [i|Failed to read file "$path": $err|]
         Right res -> return res
       TextIO.writeFile pathString versionBumpedText
-      putStrLn [i|::set-output name=old-version::$versionBumpedOldVersion|]
-      putStrLn [i|::set-output name=new-version::$versionBumpedNewVersion|]
+      putStrLn [i|::set-output name=before::$versionBumpedOldVersion|]
+      putStrLn [i|::set-output name=after::$versionBumpedNewVersion|]
     GetConfig -> do
       VersionBumped {..} <- case bumpVersion 0 contents of
         Left err -> die [i|Failed to read file "$path": $err|]
         Right res -> return res
-      putStrLn [i|::set-output name=old-version::$versionBumpedOldVersion|]
-      putStrLn [i|::set-output name=new-version::$versionBumpedOldVersion|]
+      putStrLn [i|::set-output name=before::$versionBumpedOldVersion|]
+      putStrLn [i|::set-output name=after::$versionBumpedOldVersion|]
 
 editFile :: Path -> (Text -> IO Text) -> IO ()
 editFile path onText =
