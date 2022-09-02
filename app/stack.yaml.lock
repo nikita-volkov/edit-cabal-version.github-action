@@ -130,13 +130,13 @@ packages:
 - completed:
     name: coalmine
     pantry-tree:
-      sha256: 737a36a39fab9c4bf311a5953d3c6380170b624704c9fe1e21342e4363ba4d7c
+      sha256: b86920fd29fad0524125cc43087989630e8e706c26f9df03d210b8f9747c0847
       size: 9785
-    commit: 11d0016db4d719887d588f3f5dfb63379148a1f8
+    commit: 07aeaa9d835bd6add7750308bf3ec4c126a8cda6
     git: https://github.com/nikita-volkov/coalmine
     version: 0.1.0.5
   original:
-    commit: 11d0016db4d719887d588f3f5dfb63379148a1f8
+    commit: 07aeaa9d835bd6add7750308bf3ec4c126a8cda6
     git: https://github.com/nikita-volkov/coalmine
 snapshots:
 - completed:

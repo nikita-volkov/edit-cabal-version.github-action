@@ -1,4 +1,4 @@
 resolver: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/74626a7ff3b879047f830ff1e6a7b146357b9931/snapshot.yaml
 extra-deps:
   - git: https://github.com/nikita-volkov/coalmine
-    commit: 11d0016db4d719887d588f3f5dfb63379148a1f8
+    commit: 07aeaa9d835bd6add7750308bf3ec4c126a8cda6
