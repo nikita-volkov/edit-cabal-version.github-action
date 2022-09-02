@@ -64,17 +64,14 @@ bumpVersion ::
   Either Text VersionBumped
 bumpVersion position text = do
   contents <- parse lenientParser text
-  case runMaybeT (traverseCabalContentsVersion onVersion contents) of
-    (oldVersion, Just contents) ->
+  case traverseCabalContentsVersion onVersion contents of
+    (oldVersion, contents) ->
       Right $
         VersionBumped
           oldVersion
           (cabalContentsVersion contents)
           (cabalContentsText contents)
-    (_, Nothing) ->
-      Left $ "Unavailable position"
   where
     onVersion version =
       case NumericVersion.bump position version of
-        Just bumped -> MaybeT $ (version, Just bumped)
-        Nothing -> MaybeT $ (version, Nothing)
+        bumped -> (version, bumped)

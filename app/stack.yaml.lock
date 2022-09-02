@@ -62,16 +62,16 @@ packages:
   original:
     url: https://github.com/nikita-volkov/canapi/archive/02f1d9ffea90522a3a0968305793a7f507c7da59.tar.gz
 - completed:
-    sha256: e750efab0fbe0f004c3623ddccf20e2fb2054a8f7c72ba7c499172e32a812fe3
+    sha256: d6f5577b96c900bff4881c240b02e445abfa4fc30e810ed37031d9da2f8657b7
     name: coalmine
-    size: 55011
-    url: https://github.com/nikita-volkov/coalmine/archive/3b81f5df395a7081f09f7f17a522fb75b7781fbc.tar.gz
+    size: 56347
+    url: https://github.com/nikita-volkov/coalmine/archive/02c69a9f7d0b55c8fad70d5e26ef071c130d7632.tar.gz
     pantry-tree:
-      sha256: 5d4cf056b3d823ec83263ac6f58903ad6c19e7ca0bd0f86219cff1108a24663d
-      size: 9714
+      sha256: 61f03aa03c08b6f48a0a80230c8b3b7986c8a441b0195b61d8a98031e6a4aa2f
+      size: 9858
     version: 0.1.0.5
   original:
-    url: https://github.com/nikita-volkov/coalmine/archive/3b81f5df395a7081f09f7f17a522fb75b7781fbc.tar.gz
+    url: https://github.com/nikita-volkov/coalmine/archive/02c69a9f7d0b55c8fad70d5e26ef071c130d7632.tar.gz
 - completed:
     sha256: d6dcd0ca1503d36a353d6e4015565ce25d41ab7b132d8d11b158153af5852c24
     name: curly
@@ -127,24 +127,13 @@ packages:
     version: 0.1.0.1
   original:
     url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
-- completed:
-    name: coalmine
-    pantry-tree:
-      sha256: b86920fd29fad0524125cc43087989630e8e706c26f9df03d210b8f9747c0847
-      size: 9785
-    commit: 07aeaa9d835bd6add7750308bf3ec4c126a8cda6
-    git: https://github.com/nikita-volkov/coalmine
-    version: 0.1.0.5
-  original:
-    commit: 07aeaa9d835bd6add7750308bf3ec4c126a8cda6
-    git: https://github.com/nikita-volkov/coalmine
 snapshots:
 - completed:
-    sha256: 3aa30b10ad0cb986fab7b0cf252e5925a90aefa68871adff721131a3ed2c2f14
+    sha256: 7aee334f216449a5ef34a1ce3850244f0cbd185e8b96dbc2f3864eea3edd08fd
     size: 1030
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/74626a7ff3b879047f830ff1e6a7b146357b9931/snapshot.yaml
+    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/757991c108f15816cea1b1449645b0c69e9cd02f/snapshot.yaml
   original:
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/74626a7ff3b879047f830ff1e6a7b146357b9931/snapshot.yaml
+    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/757991c108f15816cea1b1449645b0c69e9cd02f/snapshot.yaml
 - completed:
     sha256: 7d29272d067873a0d9d612fba0bd58a84c2c19d2ae37205bdf608840b15aa278
     size: 632828
