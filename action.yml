@@ -1,4 +1,5 @@
 name: Read or bump the version in a Cabal file
+
 inputs:
   mode:
     type: string
@@ -15,7 +16,8 @@ outputs:
     description: Version after edit
 runs:
   using: docker
-  image: ghcr.io/nikita-volkov/edit-cabal-version.github-action:v0.0.1
+  # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsimage
+  image: docker/Dockerfile
   args:
     - ${{ inputs.mode }}
     - ${{ inputs.bump-place }}
