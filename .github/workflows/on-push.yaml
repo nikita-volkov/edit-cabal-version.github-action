@@ -83,4 +83,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          commit: ${{ github.ref_name }}
           tag: ${{ steps.get-version.outputs.new_tag }}
