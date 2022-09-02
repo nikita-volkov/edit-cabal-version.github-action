@@ -7,19 +7,20 @@ import EditCabalVersion
 
 main :: IO ()
 main = do
-  config <- readArgs
+  Config workDir action <- readArgs
+  Path.setCurrentDirectory workDir
   path <- findCabalFile
   let pathString = Path.toString path
   contents <- TextIO.readFile pathString
-  case config of
-    BumpConfig position -> do
+  case action of
+    BumpConfigAction position -> do
       VersionBumped {..} <- case bumpVersion position contents of
         Left err -> die [i|Failed to read file "$path": $err|]
         Right res -> return res
       TextIO.writeFile pathString versionBumpedText
       putStrLn [i|::set-output name=before::$versionBumpedOldVersion|]
       putStrLn [i|::set-output name=after::$versionBumpedNewVersion|]
-    GetConfig -> do
+    GetConfigAction -> do
       VersionBumped {..} <- case bumpVersion 0 contents of
         Left err -> die [i|Failed to read file "$path": $err|]
         Right res -> return res
@@ -44,17 +45,25 @@ readArgs :: IO Config
 readArgs =
   ArgsParser.getAndConsumeArgsHappily mode
   where
-    mode =
-      join . ArgsParser.enum $
-        [ ("get", get),
-          ("bump", bump)
-        ]
+    mode = do
+      workDir <- ArgsParser.parsed "Path" lenientParser
+      action <-
+        join . ArgsParser.enum $
+          [ ("get", get),
+            ("bump", bump)
+          ]
+      return $ Config workDir action
       where
-        get = return GetConfig
+        get = return GetConfigAction
         bump = do
-          position <- ArgsParser.minMaxInt 0 7
-          return $ BumpConfig position
+          position <- ArgsParser.int 0 7
+          return $ BumpConfigAction position
+
+-- * Config
 
 data Config
-  = GetConfig
-  | BumpConfig !Int
+  = Config !Path !ConfigAction
+
+data ConfigAction
+  = GetConfigAction
+  | BumpConfigAction !Int

@@ -1,5 +1,10 @@
 name: Read or bump the version in a Cabal file
 inputs:
+  work-dir:
+    type: string
+    description: Directory in which the Cabal-file is located
+    required: false
+    default: .
   mode:
     type: string
     required: true
@@ -17,5 +22,6 @@ runs:
   using: docker
   image: ghcr.io/nikita-volkov/edit-cabal-version.github-action:v1.0.0
   args:
+    - ${{ inputs.work-dir }}
     - ${{ inputs.mode }}
     - ${{ inputs.bump-place }}
