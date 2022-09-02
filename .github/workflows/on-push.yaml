@@ -77,7 +77,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update docker image to ${{ steps.get-version.outputs.new_tag }}
-          file_pattern: /action.yml
+          file_pattern: action.yml
 
       - name: Release
         uses: ncipollo/release-action@v1
