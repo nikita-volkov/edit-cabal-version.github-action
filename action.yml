@@ -16,6 +16,7 @@ outputs:
     description: Version after edit
 runs:
   using: docker
+  # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsimage
   image: docker/Dockerfile
   args:
     - ${{ inputs.mode }}
