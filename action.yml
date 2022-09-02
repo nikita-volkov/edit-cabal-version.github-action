@@ -5,10 +5,10 @@ inputs:
     type: string
     required: true
     description: read | bump
-  bump-component:
+  bump-place:
     type: int
     required: false
-    description: If the mode is bump, then the index of the bumped version component
+    description: If the mode is bump, then the index of the bumped version place
 outputs:
   before:
     description: Version before edit
@@ -19,4 +19,4 @@ runs:
   image: docker/Dockerfile
   args:
     - ${{ inputs.mode }}
-    - ${{ inputs.bump-component }}
+    - ${{ inputs.bump-place }}
