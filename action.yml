@@ -18,5 +18,5 @@ runs:
   using: docker
   image: docker/Dockerfile
   args:
-    - ${{ inputs.container-id }}
-    - ${{ inputs.sa-key }}
+    - ${{ inputs.mode }}
+    - ${{ inputs.bump-component }}
