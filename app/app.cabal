@@ -31,9 +31,9 @@ test-suite test
   build-depends:
     edit-cabal-version,
 
-executable github-action
+executable app
   import: common-settings
-  hs-source-dirs: github-action
+  hs-source-dirs: app
   main-is: Main.hs
   build-depends:
     edit-cabal-version,
