@@ -14,7 +14,7 @@ main =
               cabal-version: 3.0
 
               name: test
-              version: 2.0
+              version: 0.2
 
               common common-settings
                 default-language: Haskell2010
@@ -23,7 +23,7 @@ main =
         ( fmap
             Editor.modifiedResultText
             ( Editor.setVersion
-                [NumericVersion.lit|2.0|]
+                [NumericVersion.lit|0.2|]
                 [i|
                 cabal-version: 3.0
 
