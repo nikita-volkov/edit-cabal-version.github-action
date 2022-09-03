@@ -47,9 +47,10 @@ loadConfig = do
   workDir <- fromMaybe "." <$> loadNonRequiredEnv "work-dir"
   mode <- loadRequiredEnv @Text "mode"
   action <- case mode of
-    "read" -> getAction
+    "get" -> getAction
+    "set" -> setAction
     "bump" -> bumpAction
-    "write" -> setAction
+    "read" -> getAction
     _ -> die "Unexpected mode"
   return $ Config workDir action
   where
@@ -64,7 +65,7 @@ loadConfig = do
             else return ()
       return $ BumpConfigAction place
     setAction = do
-      value <- loadRequiredEnv "write-value"
+      value <- loadRequiredEnv "set-value"
       return $ SetConfigAction value
 
 -- * Config

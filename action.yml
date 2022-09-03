@@ -7,13 +7,15 @@ inputs:
     required: false
     default: .
   mode:
-    description: read | bump | write
+    description: |
+      One of the following: "get", "set", "bump".
+      "read" is also allowed but deprecated, it acts the same as "get".
     required: true
   bump-place:
     description: Index of the bumped version place, when the mode is "bump"
     required: false
-  write-value:
-    description: Version to be written, when the mode is "write"
+  set-value:
+    description: Version to be written, when the mode is "set"
     required: false
 outputs:
   before:
@@ -27,4 +29,4 @@ runs:
     work-dir: ${{ inputs.work-dir }}
     mode: ${{ inputs.mode }}
     bump-place: ${{ inputs.bump-place }}
-    write-value: ${{ inputs.write-value }}
+    set-value: ${{ inputs.set-value }}
