@@ -1,6 +1,5 @@
-import qualified Coalmine.ArgsParser as ArgsParser
 import qualified Coalmine.EvenSimplerPaths as Path
-import qualified Coalmine.HappyPathIO as HappyPathIO
+import Coalmine.HappyPathIO
 import Coalmine.Prelude
 import qualified Data.Text.IO as TextIO
 import EditCabalVersion
@@ -26,6 +25,8 @@ main = do
         Right res -> return res
       putStrLn [i|::set-output name=before::$versionBumpedOldVersion|]
       putStrLn [i|::set-output name=after::$versionBumpedOldVersion|]
+    SetConfigAction version ->
+      error "TODO"
 
 editFile :: Path -> (Text -> IO Text) -> IO ()
 editFile path onText =
@@ -42,20 +43,29 @@ findCabalFile = do
     _ -> die "More than one Cabal-file found"
 
 loadConfig :: IO Config
-loadConfig =
-  ArgsParser.getAndConsumeArgsHappily $ do
-    workDir <- ArgsParser.parsed "Path" lenientParser
-    action <-
-      join . ArgsParser.enum $
-        [ ("get", get),
-          ("bump", bump)
-        ]
-    return $ Config workDir action
+loadConfig = do
+  workDir <- fromMaybe "." <$> loadNonRequiredEnv "work-dir"
+  mode <- loadRequiredEnv @Text "mode"
+  action <- case mode of
+    "read" -> getAction
+    "bump" -> bumpAction
+    "write" -> setAction
+    _ -> die "Unexpected mode"
+  return $ Config workDir action
   where
-    get = return GetConfigAction
-    bump = do
-      position <- ArgsParser.int 0 7
-      return $ BumpConfigAction position
+    getAction = return $ GetConfigAction
+    bumpAction = do
+      place <- loadRequiredEnv "bump-place"
+      if place < 0
+        then die "bump-place is smaller than 0"
+        else
+          if place > 7
+            then die "bump-place is larger than 7"
+            else return ()
+      return $ BumpConfigAction place
+    setAction = do
+      value <- loadRequiredEnv "write-value"
+      return $ SetConfigAction value
 
 -- * Config
 
@@ -65,3 +75,4 @@ data Config
 data ConfigAction
   = GetConfigAction
   | BumpConfigAction !Int
+  | SetConfigAction !NumericVersion

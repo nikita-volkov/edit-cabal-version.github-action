@@ -3,18 +3,18 @@ name: Edit version in Cabal-file
 author: Nikita Volkov
 inputs:
   work-dir:
-    type: string
     description: Directory in which the Cabal-file is located
     required: false
     default: .
   mode:
-    type: string
+    description: read | bump | write
     required: true
-    description: read | bump
   bump-place:
-    type: int
+    description: Index of the bumped version place, when the mode is "bump"
     required: false
-    description: If the mode is bump, then the index of the bumped version place
+  write-value:
+    description: Version to be written, when the mode is "write"
+    required: false
 outputs:
   before:
     description: Version before edit
@@ -23,7 +23,8 @@ outputs:
 runs:
   using: docker
   image: docker://ghcr.io/nikita-volkov/edit-cabal-version.github-action:v1.0.0
-  args:
-    - ${{ inputs.work-dir }}
-    - ${{ inputs.mode }}
-    - ${{ inputs.bump-place }}
+  env:
+    work-dir: ${{ inputs.work-dir }}
+    mode: ${{ inputs.mode }}
+    bump-place: ${{ inputs.bump-place }}
+    write-value: ${{ inputs.write-value }}
