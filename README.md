@@ -7,7 +7,7 @@ GitHub Action for bumping and retrieving the package version in `.cabal` files f
 ## Bump
 
 ```yaml
-- uses: nikita-volkov/edit-cabal-version.github-action@v1
+- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
   with:
     mode: bump
     # Index of the bumped version place.
@@ -23,7 +23,7 @@ Outputs:
 ## Retrieving
 
 ```yaml
-- uses: nikita-volkov/edit-cabal-version.github-action@v1
+- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
   with:
     mode: read
 ```
