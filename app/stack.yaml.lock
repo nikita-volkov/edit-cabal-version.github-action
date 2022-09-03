@@ -62,16 +62,16 @@ packages:
   original:
     url: https://github.com/nikita-volkov/canapi/archive/02f1d9ffea90522a3a0968305793a7f507c7da59.tar.gz
 - completed:
-    sha256: ab4cff0c0a6927ce5db25ba6e84eb5b246cfcb029e38d56d81cc99d007e679be
+    sha256: c12ef042eecbdf577fa5d1f051c0a48d7a21f87b36c333330a67eb1271c67dfb
     name: coalmine
-    size: 56579
-    url: https://github.com/nikita-volkov/coalmine/archive/86b3231791233649c6f4b0da3186d031b2ccf936.tar.gz
+    size: 56302
+    url: https://github.com/nikita-volkov/coalmine/archive/aca544068a85ee42bc85033ceca0b7322034d54c.tar.gz
     pantry-tree:
-      sha256: b7f691e72d87a368cbf6a15bfa25b24a002e4f690839b18544d66b29b80aee53
-      size: 9858
+      sha256: 57eb45a00276a11b16b3ce1c77aab4a5948db2aa74c6dec9e564b52beb5f921f
+      size: 9807
     version: 0.1.0.5
   original:
-    url: https://github.com/nikita-volkov/coalmine/archive/86b3231791233649c6f4b0da3186d031b2ccf936.tar.gz
+    url: https://github.com/nikita-volkov/coalmine/archive/aca544068a85ee42bc85033ceca0b7322034d54c.tar.gz
 - completed:
     sha256: d6dcd0ca1503d36a353d6e4015565ce25d41ab7b132d8d11b158153af5852c24
     name: curly
@@ -129,11 +129,11 @@ packages:
     url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
 snapshots:
 - completed:
-    sha256: 6d4248ab038469bab7265109105442cbfcc2749614103f6b85c6747cb241967a
+    sha256: 008cf9821d90e481f2fe3d9b3133edd9b9b5e741cdf159c3d9a2e538e9ab6108
     size: 1030
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/8a94d7c7d7c53bd129370adc1b3b0ffe1369c6db/snapshot.yaml
+    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/64db80a24ab2d522b2bc45e93ac00b1a38e7c48f/snapshot.yaml
   original:
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/8a94d7c7d7c53bd129370adc1b3b0ffe1369c6db/snapshot.yaml
+    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/64db80a24ab2d522b2bc45e93ac00b1a38e7c48f/snapshot.yaml
 - completed:
     sha256: 7d29272d067873a0d9d612fba0bd58a84c2c19d2ae37205bdf608840b15aa278
     size: 632828
