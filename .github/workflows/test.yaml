@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - id: edit-1
-        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
         with:
           mode: bump
           bump-place: 1
@@ -21,21 +21,40 @@ jobs:
               exit 1
             fi
 
+      - id: edit-5
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
+        with:
+          mode: set
+          set-value: |
+            0.2
+
+      - run: |
+          if [ "${{ steps.edit-5.outputs.before }}" != "0.1" ]
+            then
+              echo "Invalid version before edit: ${{ steps.edit-5.outputs.before }}"
+              exit 1
+            fi
+          if [ "${{ steps.edit-5.outputs.after }}" != "0.2" ]
+            then
+              echo "Invalid version after edit: ${{ steps.edit-5.outputs.after }}"
+              exit 1
+            fi
+
       - id: edit-2
-        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
         with:
           mode: bump
           bump-place: 1
 
       - run: |
-          if [ "${{ steps.edit-2.outputs.after }}" != "0.2" ]
+          if [ "${{ steps.edit-2.outputs.after }}" != "0.3" ]
             then
               echo "Invalid version after bump: ${{ steps.edit-2.outputs.after }}"
               exit 1
             fi
 
       - id: edit-3
-        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
         with:
           mode: bump
           bump-place: 0
@@ -48,7 +67,7 @@ jobs:
             fi
 
       - id: edit-4
-        uses: nikita-volkov/edit-cabal-version.github-action@v1.0.0
+        uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
         with:
           mode: bump
           bump-place: 3
