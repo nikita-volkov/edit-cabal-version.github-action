@@ -7,7 +7,7 @@ import EditCabalVersion
 
 main :: IO ()
 main = do
-  Config workDir action <- readArgs
+  Config workDir action <- loadConfig
   Path.setCurrentDirectory workDir
   path <- findCabalFile
   let pathString = Path.toString path
@@ -41,23 +41,21 @@ findCabalFile = do
     [] -> die "No Cabal-file found"
     _ -> die "More than one Cabal-file found"
 
-readArgs :: IO Config
-readArgs =
-  ArgsParser.getAndConsumeArgsHappily mode
+loadConfig :: IO Config
+loadConfig =
+  ArgsParser.getAndConsumeArgsHappily $ do
+    workDir <- ArgsParser.parsed "Path" lenientParser
+    action <-
+      join . ArgsParser.enum $
+        [ ("get", get),
+          ("bump", bump)
+        ]
+    return $ Config workDir action
   where
-    mode = do
-      workDir <- ArgsParser.parsed "Path" lenientParser
-      action <-
-        join . ArgsParser.enum $
-          [ ("get", get),
-            ("bump", bump)
-          ]
-      return $ Config workDir action
-      where
-        get = return GetConfigAction
-        bump = do
-          position <- ArgsParser.int 0 7
-          return $ BumpConfigAction position
+    get = return GetConfigAction
+    bump = do
+      position <- ArgsParser.int 0 7
+      return $ BumpConfigAction position
 
 -- * Config
 
