@@ -2,7 +2,7 @@ import qualified Coalmine.EvenSimplerPaths as Path
 import Coalmine.HappyPathIO
 import Coalmine.Prelude
 import qualified Data.Text.IO as TextIO
-import EditCabalVersion
+import qualified EditCabalVersion as Editor
 
 main :: IO ()
 main = do
@@ -11,22 +11,26 @@ main = do
   path <- findCabalFile
   let pathString = Path.toString path
   contents <- TextIO.readFile pathString
-  case action of
-    BumpConfigAction position -> do
-      VersionBumped {..} <- case bumpVersion position contents of
-        Left err -> die [i|Failed to read file "$path": $err|]
-        Right res -> return res
-      TextIO.writeFile pathString versionBumpedText
-      putStrLn [i|::set-output name=before::$versionBumpedOldVersion|]
-      putStrLn [i|::set-output name=after::$versionBumpedNewVersion|]
+  (before, after) <- case action of
     GetConfigAction -> do
-      VersionBumped {..} <- case bumpVersion 0 contents of
-        Left err -> die [i|Failed to read file "$path": $err|]
+      version <- case Editor.getVersion contents of
+        Left err -> die [i|Failed to read file $path: $err|]
         Right res -> return res
-      putStrLn [i|::set-output name=before::$versionBumpedOldVersion|]
-      putStrLn [i|::set-output name=after::$versionBumpedOldVersion|]
-    SetConfigAction version ->
-      error "TODO"
+      return (version, version)
+    SetConfigAction version -> do
+      Editor.ModifiedResult {..} <- case Editor.setVersion version contents of
+        Left err -> die [i|Failed to read file $path: $err|]
+        Right res -> return res
+      TextIO.writeFile pathString modifiedResultText
+      return (modifiedResultOldVersion, modifiedResultNewVersion)
+    BumpConfigAction position -> do
+      Editor.ModifiedResult {..} <- case Editor.bumpVersion position contents of
+        Left err -> die [i|Failed to read file $path: $err|]
+        Right res -> return res
+      TextIO.writeFile pathString modifiedResultText
+      return (modifiedResultOldVersion, modifiedResultNewVersion)
+  putStrLn [i|::set-output name=before::$before|]
+  putStrLn [i|::set-output name=after::$after|]
 
 editFile :: Path -> (Text -> IO Text) -> IO ()
 editFile path onText =

@@ -1,6 +1,11 @@
 module EditCabalVersion
-  ( bumpVersion,
-    VersionBumped (..),
+  ( -- * Functions
+    setVersion,
+    getVersion,
+    bumpVersion,
+
+    -- * Results
+    ModifiedResult (..),
   )
 where
 
@@ -50,24 +55,48 @@ traverseCabalContentsVersion mapper (CabalContents a b c) =
 
 -- * Final
 
-data VersionBumped = VersionBumped
-  { versionBumpedOldVersion :: NumericVersion,
-    versionBumpedNewVersion :: NumericVersion,
-    versionBumpedText :: Text
+data ModifiedResult = ModifiedResult
+  { modifiedResultOldVersion :: NumericVersion,
+    modifiedResultNewVersion :: NumericVersion,
+    modifiedResultText :: Text
   }
+
+getVersion ::
+  Text ->
+  Either Text NumericVersion
+getVersion text =
+  parse lenientParser text
+    <&> cabalContentsVersion
+
+setVersion ::
+  NumericVersion ->
+  Text ->
+  Either Text ModifiedResult
+setVersion newVersion text = do
+  contents <- parse lenientParser text
+  case traverseCabalContentsVersion onVersion contents of
+    (oldVersion, contents) ->
+      Right $
+        ModifiedResult
+          oldVersion
+          newVersion
+          (cabalContentsText contents)
+  where
+    onVersion version =
+      (version, newVersion)
 
 bumpVersion ::
   -- | Index of the bumped version section.
   -- Major, Minor, Patch and etc.
   Int ->
   Text ->
-  Either Text VersionBumped
+  Either Text ModifiedResult
 bumpVersion position text = do
   contents <- parse lenientParser text
   case traverseCabalContentsVersion onVersion contents of
     (oldVersion, contents) ->
       Right $
-        VersionBumped
+        ModifiedResult
           oldVersion
           (cabalContentsVersion contents)
           (cabalContentsText contents)
