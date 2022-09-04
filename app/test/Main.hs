@@ -25,14 +25,14 @@ main =
             ( Editor.setVersion
                 [NumericVersion.lit|0.2|]
                 [i|
-                cabal-version: 3.0
+                  cabal-version: 3.0
 
-                name: test
-                version: 0
+                  name: test
+                  version: 0
 
-                common common-settings
-                  default-language: Haskell2010
-              |]
+                  common common-settings
+                    default-language: Haskell2010
+                |]
             )
         )
     ]
