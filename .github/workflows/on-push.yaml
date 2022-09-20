@@ -89,6 +89,14 @@ jobs:
             action.yml
             README.md
 
+      - name: Merge to master
+        uses: devmasx/merge-branch@1.4.0
+        with:
+          type: now
+          from_branch: ${{ github.ref_name }}
+          target_branch: master
+          github_token: ${{ github.token }}
+
       - name: Release
         uses: ncipollo/release-action@v1
         with:
