@@ -24,7 +24,7 @@ outputs:
     description: Version after edit
 runs:
   using: docker
-  image: docker://ghcr.io/nikita-volkov/edit-cabal-version.github-action:v1.1.0
+  image: docker://ghcr.io/nikita-volkov/edit-cabal-version.github-action:v1.1.1
   env:
     work-dir: ${{ inputs.work-dir }}
     mode: ${{ inputs.mode }}

@@ -74,10 +74,28 @@ jobs:
           updateFile: true
           commitChange: false
 
+      - name: Update refs in README.md
+        run: |
+          escaped_tag="$(echo "${{ steps.get-version.outputs.new_tag }}" | sed "s|\.|\\\\.|g")"
+          
+          sed -Ei \
+          "s/(nikita-volkov\/edit-cabal-version\.github-action@)v[0-9]+\.[0-9]+\.[0-9]/\1$escaped_tag/g" \
+          README.md
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update docker image to ${{ steps.get-version.outputs.new_tag }}
-          file_pattern: action.yml
+          commit_message: Update refs to ${{ steps.get-version.outputs.new_tag }}
+          file_pattern:
+            action.yml
+            README.md
+
+      - name: Merge to master
+        uses: devmasx/merge-branch@1.4.0
+        with:
+          type: now
+          from_branch: ${{ github.ref_name }}
+          target_branch: master
+          github_token: ${{ github.token }}
 
       - name: Release
         uses: ncipollo/release-action@v1

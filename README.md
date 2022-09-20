@@ -7,7 +7,7 @@ GitHub Action for bumping and retrieving the package version in `.cabal` files f
 ## Get
 
 ```yaml
-- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
+- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.1
   with:
     mode: get
 ```
@@ -15,7 +15,7 @@ GitHub Action for bumping and retrieving the package version in `.cabal` files f
 ## Set
 
 ```yaml
-- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
+- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.1
   with:
     mode: set
     set-value: "2.0.0"
@@ -24,7 +24,7 @@ GitHub Action for bumping and retrieving the package version in `.cabal` files f
 ## Bump
 
 ```yaml
-- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.0
+- uses: nikita-volkov/edit-cabal-version.github-action@v1.1.1
   with:
     mode: bump
     # Index of the bumped version place.
