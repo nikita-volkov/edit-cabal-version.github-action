@@ -3,7 +3,7 @@ cabal-version: 3.0
 name: app
 version: 0
 
-common common-settings
+common base-settings
   default-extensions: ApplicativeDo, Arrows, BangPatterns, BinaryLiterals, BlockArguments, ConstraintKinds, DataKinds, DefaultSignatures, DeriveDataTypeable, DeriveFoldable, DeriveFunctor, DeriveGeneric, DeriveTraversable, DerivingVia, DuplicateRecordFields, EmptyCase, EmptyDataDecls, FlexibleContexts, FlexibleInstances, FunctionalDependencies, GADTs, GeneralizedNewtypeDeriving, HexFloatLiterals, LambdaCase, LiberalTypeSynonyms, MultiParamTypeClasses, MultiWayIf, NoImplicitPrelude, NoMonomorphismRestriction, NumericUnderscores, OverloadedLabels, OverloadedStrings, PatternGuards, PatternSynonyms, ParallelListComp, QuasiQuotes, RankNTypes, RecordWildCards, ScopedTypeVariables, StandaloneDeriving, StrictData, TemplateHaskell, TupleSections, TypeApplications, TypeFamilies, TypeOperators, UndecidableInstances, ViewPatterns
   default-language: Haskell2010
   build-depends:
@@ -12,19 +12,20 @@ common common-settings
     rerebase,
 
 common executable-settings
-  ghc-options: 
+  import: base-settings
+  ghc-options:
     -O2
     -threaded
     "-with-rtsopts=-N -I0 -qg"
 
 library edit-cabal-version
-  import: common-settings
+  import: base-settings
   hs-source-dirs: edit-cabal-version
   exposed-modules:
     EditCabalVersion
 
 test-suite test
-  import: common-settings
+  import: base-settings
   type: exitcode-stdio-1.0
   hs-source-dirs: test
   main-is: Main.hs
@@ -32,7 +33,7 @@ test-suite test
     edit-cabal-version,
 
 executable app
-  import: common-settings
+  import: executable-settings
   hs-source-dirs: app
   main-is: Main.hs
   build-depends:
