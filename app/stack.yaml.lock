@@ -26,20 +26,6 @@ packages:
   original:
     hackage: punycode-2.0
 - completed:
-    hackage: rebase-1.16.1@sha256:45b031efbc6706bd960469b576f9b962b9753c7cecc777e459cb72f3d99cf393,14389
-    pantry-tree:
-      sha256: d183b8f85c7ecc1138bda927cb22d3f45c986d299b08ec4c5173b30adf8df46e
-      size: 29115
-  original:
-    hackage: rebase-1.16.1
-- completed:
-    hackage: rerebase-1.16.1@sha256:2b2ca0d558d6b102a72a8829876a6e3b68d2aeb6aaad738b460ee4bf93887f44,9743
-    pantry-tree:
-      sha256: f284e2ebe08d33574571bfa67912f6328ee3dcc5bbd5edfc6e3285c4a22c0f9a
-      size: 26389
-  original:
-    hackage: rerebase-1.16.1
-- completed:
     hackage: rtld-0.0.2@sha256:ebf8a2ae1cd04e829f5b86b5638ed66139a76cbbe75ae43394d37cb9bd8f5037,1653
     pantry-tree:
       sha256: 1697c8d8dbd78b4ae28bb492f8ac5d09d0892128b30f35d94436f8e32544c0ab
@@ -78,14 +64,14 @@ packages:
 - completed:
     name: coalmine
     pantry-tree:
-      sha256: aadd5e64c1fe8540b90828a3162b87cd155b4c9a1b2c7e055269c4aa7f136e2e
-      size: 9807
-    sha256: 2ac957387e95f3b3fb37c37725f3c6019b21f2f6ff14f0a882463f4601d47fa1
-    size: 57099
-    url: https://github.com/nikita-volkov/coalmine/archive/3bb576aa5719677e1aff3e3adda1aa04ff43c67e.tar.gz
-    version: 0.1.0.7
+      sha256: f7ac1c67efe11cc07c3195757b1a5be4fb3243d0bf7a0fd9108f8142d9d88033
+      size: 13728
+    sha256: 9b88bae52acbe2141f1b3796aa4efafd4d72a980c51f77eae1653c7b2414c93d
+    size: 80091
+    url: https://github.com/nikita-volkov/coalmine/archive/d923b49a8d2bcf85a84e7850515892cc7a93eec2.tar.gz
+    version: 0.1.0.18
   original:
-    url: https://github.com/nikita-volkov/coalmine/archive/3bb576aa5719677e1aff3e3adda1aa04ff43c67e.tar.gz
+    url: https://github.com/nikita-volkov/coalmine/archive/d923b49a8d2bcf85a84e7850515892cc7a93eec2.tar.gz
 - completed:
     name: curly
     pantry-tree:
@@ -120,30 +106,19 @@ packages:
   original:
     url: https://github.com/nikita-volkov/lean-http-client/archive/52343895df1e5ae49159b8c5f76a50ac438216b1.tar.gz
 - completed:
-    name: moore-machines
-    pantry-tree:
-      sha256: 3d1505067d5c8599e9843ed45ec2bc587fa5100c448f558ca5db2c97fb55706f
-      size: 887
-    sha256: 412ad5ec4f887fbbb77afd2b273a44a320b3e6f044c6382bd59c572b6f69a3f1
-    size: 8284
-    url: https://github.com/nikita-volkov/moore-machines/archive/7e95c33b203a1cfe42dbc0e0de3cec8e6fe94290.tar.gz
-    version: '0.1'
-  original:
-    url: https://github.com/nikita-volkov/moore-machines/archive/7e95c33b203a1cfe42dbc0e0de3cec8e6fe94290.tar.gz
-- completed:
     name: structure-kit
     pantry-tree:
-      sha256: b7779ebe935d65c0b4f6e3ea8b5f5011abdabf362b1673826545c93625e050ad
-      size: 3500
-    sha256: 2e5b01ebcbc4ec1371d2014cb04307a63239148f73a0bed55bf418e20e654ce9
-    size: 41529
-    url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
+      sha256: eafdfc72a06a88fc983dfa12b501470962fa5e448a010e8cdc22f7ede2118495
+      size: 3699
+    sha256: 3669cfe6414d12263b9a42b75cce15936d45a5f7f2f042f4106affd73d20fd56
+    size: 42836
+    url: https://github.com/nikita-volkov/structure-kit/archive/f6423d909d1fc65e15f128012e4940b3412e64fd.tar.gz
     version: 0.1.0.1
   original:
-    url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
+    url: https://github.com/nikita-volkov/structure-kit/archive/f6423d909d1fc65e15f128012e4940b3412e64fd.tar.gz
 snapshots:
 - completed:
-    sha256: b40962d62404e8389ddc2f4228170871b1a6d62b66e7d532a6c798426f047603
-    size: 636956
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2022/9/19.yaml
-  original: nightly-2022-09-19
+    sha256: 1d25e3e0e2edb856951e8903821e0199a1112ab48b76c83f814e4f7596961e89
+    size: 598120
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2023/2/14.yaml
+  original: nightly-2023-02-14
