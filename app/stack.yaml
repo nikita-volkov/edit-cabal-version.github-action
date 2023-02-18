@@ -1,1 +1,1 @@
-resolver: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/71417e8b4e2ce19faac16e9a15b4669a5ab956e0/snapshot.yaml
+resolver: .stack-snapshot/snapshot.yaml
