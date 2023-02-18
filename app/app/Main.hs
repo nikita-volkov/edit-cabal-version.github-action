@@ -32,12 +32,6 @@ main = do
   putStrLn [i|::set-output name=before::$before|]
   putStrLn [i|::set-output name=after::$after|]
 
-editFile :: Path -> (Text -> IO Text) -> IO ()
-editFile path onText =
-  TextIO.readFile pathString >>= onText >>= TextIO.writeFile pathString
-  where
-    pathString = Path.toString path
-
 findCabalFile :: IO Path
 findCabalFile = do
   files <- filter ((==) ["cabal"] . Path.extensions) <$> Path.listDirectory "."
