@@ -5,149 +5,143 @@
 
 packages:
 - completed:
+    hackage: cereal-data-dword-0.1.1@sha256:a3fa6dfafaeeb3774c5888dfa601d561ce05b0af66f52859970247e58135d47e,1381
     pantry-tree:
       sha256: 520aa5f59b55c14d27115a801f499f940a563849b0c54876bcd6be41f6450713
       size: 456
-    hackage: cereal-data-dword-0.1.1@sha256:a3fa6dfafaeeb3774c5888dfa601d561ce05b0af66f52859970247e58135d47e,1381
   original:
     hackage: cereal-data-dword-0.1.1
 - completed:
+    hackage: curlhs-0.1.6@sha256:ac8dbe0348ce66746774f019fe62dbdaf40a200bed62f5b7fb0ecb9bd11cfa1c,4107
     pantry-tree:
       sha256: 35738614f24ff682eb0b72b8fd66c9b4a919346302ddb96c96bf5b1a9eaa70f5
       size: 2014
-    hackage: curlhs-0.1.6@sha256:ac8dbe0348ce66746774f019fe62dbdaf40a200bed62f5b7fb0ecb9bd11cfa1c,4107
   original:
     hackage: curlhs-0.1.6
 - completed:
+    hackage: punycode-2.0@sha256:dce7f481b5eedc750cf49d21a80b839cb366afd2d29bc506acca5ad9d0c06a8f,1503
     pantry-tree:
       sha256: 946dbffdad0a92dbdeeaaabb1c7ac2451f3002561407068543fcd860cd860f15
       size: 473
-    hackage: punycode-2.0@sha256:dce7f481b5eedc750cf49d21a80b839cb366afd2d29bc506acca5ad9d0c06a8f,1503
   original:
     hackage: punycode-2.0
 - completed:
+    hackage: rebase-1.16.1@sha256:45b031efbc6706bd960469b576f9b962b9753c7cecc777e459cb72f3d99cf393,14389
     pantry-tree:
       sha256: d183b8f85c7ecc1138bda927cb22d3f45c986d299b08ec4c5173b30adf8df46e
       size: 29115
-    hackage: rebase-1.16.1@sha256:45b031efbc6706bd960469b576f9b962b9753c7cecc777e459cb72f3d99cf393,14389
   original:
     hackage: rebase-1.16.1
 - completed:
+    hackage: rerebase-1.16.1@sha256:2b2ca0d558d6b102a72a8829876a6e3b68d2aeb6aaad738b460ee4bf93887f44,9743
     pantry-tree:
       sha256: f284e2ebe08d33574571bfa67912f6328ee3dcc5bbd5edfc6e3285c4a22c0f9a
       size: 26389
-    hackage: rerebase-1.16.1@sha256:2b2ca0d558d6b102a72a8829876a6e3b68d2aeb6aaad738b460ee4bf93887f44,9743
   original:
     hackage: rerebase-1.16.1
 - completed:
+    hackage: rtld-0.0.2@sha256:ebf8a2ae1cd04e829f5b86b5638ed66139a76cbbe75ae43394d37cb9bd8f5037,1653
     pantry-tree:
       sha256: 1697c8d8dbd78b4ae28bb492f8ac5d09d0892128b30f35d94436f8e32544c0ab
       size: 305
-    hackage: rtld-0.0.2@sha256:ebf8a2ae1cd04e829f5b86b5638ed66139a76cbbe75ae43394d37cb9bd8f5037,1653
   original:
     hackage: rtld-0.0.2
 - completed:
+    hackage: timestamp-0.2@sha256:103fe49ce206922d3b14d57d8aff25eaf03c70fef5fcdaeaeb8416aaee163e51,1598
     pantry-tree:
       sha256: 51dc0ab22269973eec829ae476fb3102cfe155ffde2fd1d039dedf65c7842031
       size: 509
-    hackage: timestamp-0.2@sha256:103fe49ce206922d3b14d57d8aff25eaf03c70fef5fcdaeaeb8416aaee163e51,1598
   original:
     hackage: timestamp-0.2
 - completed:
-    sha256: d2cee5340e679acf4c7d7d5645bd9d85a16a2ccc33df5eca923a7410aca25ba2
     name: acquire
-    size: 5735
-    url: https://github.com/metrix-ai/acquire/archive/75194757308ae9340b0e2eda46d8db4d25af7516.tar.gz
     pantry-tree:
       sha256: e194150d070a0e4f07e5f2285e82f177312f328c7490f3a659f361b4f6324d00
       size: 438
+    sha256: d2cee5340e679acf4c7d7d5645bd9d85a16a2ccc33df5eca923a7410aca25ba2
+    size: 5735
+    url: https://github.com/metrix-ai/acquire/archive/75194757308ae9340b0e2eda46d8db4d25af7516.tar.gz
     version: 0.3.1
   original:
     url: https://github.com/metrix-ai/acquire/archive/75194757308ae9340b0e2eda46d8db4d25af7516.tar.gz
 - completed:
-    sha256: cb5603dced8ecf0452cd98df2587f23b795d3c73ac56e5f1f9278ef0dadce4cd
     name: canapi
-    size: 13379
-    url: https://github.com/nikita-volkov/canapi/archive/02f1d9ffea90522a3a0968305793a7f507c7da59.tar.gz
     pantry-tree:
       sha256: 54c44986c3d7f8daa4464e4e097f312dc3ac0c02f7eb5fbb8bba3a6e6d19487a
       size: 1319
+    sha256: cb5603dced8ecf0452cd98df2587f23b795d3c73ac56e5f1f9278ef0dadce4cd
+    size: 13379
+    url: https://github.com/nikita-volkov/canapi/archive/02f1d9ffea90522a3a0968305793a7f507c7da59.tar.gz
     version: '0.1'
   original:
     url: https://github.com/nikita-volkov/canapi/archive/02f1d9ffea90522a3a0968305793a7f507c7da59.tar.gz
 - completed:
-    sha256: 2ac957387e95f3b3fb37c37725f3c6019b21f2f6ff14f0a882463f4601d47fa1
     name: coalmine
-    size: 57099
-    url: https://github.com/nikita-volkov/coalmine/archive/3bb576aa5719677e1aff3e3adda1aa04ff43c67e.tar.gz
     pantry-tree:
       sha256: aadd5e64c1fe8540b90828a3162b87cd155b4c9a1b2c7e055269c4aa7f136e2e
       size: 9807
+    sha256: 2ac957387e95f3b3fb37c37725f3c6019b21f2f6ff14f0a882463f4601d47fa1
+    size: 57099
+    url: https://github.com/nikita-volkov/coalmine/archive/3bb576aa5719677e1aff3e3adda1aa04ff43c67e.tar.gz
     version: 0.1.0.7
   original:
     url: https://github.com/nikita-volkov/coalmine/archive/3bb576aa5719677e1aff3e3adda1aa04ff43c67e.tar.gz
 - completed:
-    sha256: d6dcd0ca1503d36a353d6e4015565ce25d41ab7b132d8d11b158153af5852c24
     name: curly
-    size: 6554
-    url: https://github.com/nikita-volkov/curly/archive/befa756b963f049f34ff63d905c50125fb2f195f.tar.gz
     pantry-tree:
       sha256: bdcc3cb625679433a021a42b934cdbe5df19085081cdd1710df0bee1fa4e151f
       size: 577
+    sha256: d6dcd0ca1503d36a353d6e4015565ce25d41ab7b132d8d11b158153af5852c24
+    size: 6554
+    url: https://github.com/nikita-volkov/curly/archive/befa756b963f049f34ff63d905c50125fb2f195f.tar.gz
     version: '0.1'
   original:
     url: https://github.com/nikita-volkov/curly/archive/befa756b963f049f34ff63d905c50125fb2f195f.tar.gz
 - completed:
-    sha256: 58b990d08a9c79ca8893c6d36b9a84f4ad50c6eab7003a706856025de8004feb
     name: distillery
-    size: 5555
-    url: https://github.com/nikita-volkov/distillery/archive/2c2905f2addb0d1925c43d427fcf65340ee64b2a.tar.gz
     pantry-tree:
       sha256: 03d32965a35914b68bdaa149db48ce66e774783360f5b7d8b18db72de61b7baf
       size: 524
+    sha256: 58b990d08a9c79ca8893c6d36b9a84f4ad50c6eab7003a706856025de8004feb
+    size: 5555
+    url: https://github.com/nikita-volkov/distillery/archive/2c2905f2addb0d1925c43d427fcf65340ee64b2a.tar.gz
     version: '0.1'
   original:
     url: https://github.com/nikita-volkov/distillery/archive/2c2905f2addb0d1925c43d427fcf65340ee64b2a.tar.gz
 - completed:
-    sha256: 5fed90107db0d87be0ea190d2f2ce260e24c212b6cdce6f53566f4b57f42fc7c
     name: lean-http-client
-    size: 10129
-    url: https://github.com/nikita-volkov/lean-http-client/archive/52343895df1e5ae49159b8c5f76a50ac438216b1.tar.gz
     pantry-tree:
       sha256: 64da0f3390166969e2fe6a140d847c315258f9bcb8fcaf3169fd78b4b25b6f6f
       size: 544
+    sha256: 5fed90107db0d87be0ea190d2f2ce260e24c212b6cdce6f53566f4b57f42fc7c
+    size: 10129
+    url: https://github.com/nikita-volkov/lean-http-client/archive/52343895df1e5ae49159b8c5f76a50ac438216b1.tar.gz
     version: '0.1'
   original:
     url: https://github.com/nikita-volkov/lean-http-client/archive/52343895df1e5ae49159b8c5f76a50ac438216b1.tar.gz
 - completed:
-    sha256: 412ad5ec4f887fbbb77afd2b273a44a320b3e6f044c6382bd59c572b6f69a3f1
     name: moore-machines
-    size: 8284
-    url: https://github.com/nikita-volkov/moore-machines/archive/7e95c33b203a1cfe42dbc0e0de3cec8e6fe94290.tar.gz
     pantry-tree:
       sha256: 3d1505067d5c8599e9843ed45ec2bc587fa5100c448f558ca5db2c97fb55706f
       size: 887
+    sha256: 412ad5ec4f887fbbb77afd2b273a44a320b3e6f044c6382bd59c572b6f69a3f1
+    size: 8284
+    url: https://github.com/nikita-volkov/moore-machines/archive/7e95c33b203a1cfe42dbc0e0de3cec8e6fe94290.tar.gz
     version: '0.1'
   original:
     url: https://github.com/nikita-volkov/moore-machines/archive/7e95c33b203a1cfe42dbc0e0de3cec8e6fe94290.tar.gz
 - completed:
-    sha256: 2e5b01ebcbc4ec1371d2014cb04307a63239148f73a0bed55bf418e20e654ce9
     name: structure-kit
-    size: 41529
-    url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
     pantry-tree:
       sha256: b7779ebe935d65c0b4f6e3ea8b5f5011abdabf362b1673826545c93625e050ad
       size: 3500
+    sha256: 2e5b01ebcbc4ec1371d2014cb04307a63239148f73a0bed55bf418e20e654ce9
+    size: 41529
+    url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
     version: 0.1.0.1
   original:
     url: https://github.com/nikita-volkov/structure-kit/archive/46ffb6527c48f8a718adecd21a313f0b1ba5e81c.tar.gz
 snapshots:
-- completed:
-    sha256: c1538e594396c5a7e0aec190d7b0a3bddcbc613615351defa0b7693e144f711d
-    size: 1068
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/71417e8b4e2ce19faac16e9a15b4669a5ab956e0/snapshot.yaml
-  original:
-    url: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/71417e8b4e2ce19faac16e9a15b4669a5ab956e0/snapshot.yaml
 - completed:
     sha256: b40962d62404e8389ddc2f4228170871b1a6d62b66e7d532a6c798426f047603
     size: 636956
