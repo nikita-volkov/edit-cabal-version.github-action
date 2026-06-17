@@ -59,7 +59,7 @@ jobs:
       - name: Define image metadata
         id: define-image-metadata
         run: |
-          echo ::set-output name=name::${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get-version.outputs.new_tag }}
+          echo name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get-version.outputs.new_tag }} >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
